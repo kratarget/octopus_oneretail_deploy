@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oneretail-app
+  labels:
+    app: oneretail-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oneretail-app
+  template:
+    metadata:
+      labels:
+        app: oneretail-app
+    spec:
+      imagePullSecrets:
+        - name: oneretailhackaton.jfrog.io
+      containers:
+        - name: app
+          image: oneretailhackaton.jfrog.io/virtual-docker/kratarget/octopus_oneretail_deploy
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "0.5"
+            limits:
+              memory: "1Gi"
+              cpu: "4"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6
