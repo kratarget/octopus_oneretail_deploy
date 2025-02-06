@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: oneretail
+  namespace: argocd
+  labels:
+    env: dev
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name: in-cluster
+    namespace: octopus
+  project: default
+  source:
+    path: manifests/app/base
+    repoURL: https://github.com/kratarget/octopus_oneretail_deploy.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - PruneLast=true
