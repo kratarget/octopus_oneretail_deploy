@@ -17,8 +17,10 @@ jobs:
       attestations: write
       id-token: write
     steps:
-      - name: Check out Repo B
-        uses: actions/checkout@v2
+      - name: Check out Repo A
+        uses: actions/checkout@v4
+      - name: Check out Repo Source
+        uses: actions/checkout@v4
         with:
           repository: 'kratarget/oneretail-app'
           clean: 'true'
