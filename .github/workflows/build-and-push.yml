@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Check out Repo B
         uses: actions/checkout@v2
+        with:
+          repository: 'kratarget/oneretail-app'
+          clean: 'true'
       
       # Use the payload if needed
       - name: Show payload
