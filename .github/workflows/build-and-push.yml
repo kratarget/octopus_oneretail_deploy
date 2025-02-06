@@ -49,7 +49,7 @@ jobs:
       - name: Build Tag and push Docker Image
         run: |
           jf docker build -t $IMAGE_NAME -f ./Dockerfile ./app
-          jf docker push $IMAGE_NAME
+          jf docker push $IMAGE_NAME --server-id oneretailhackaton
           
       - name: Publish Build info With JFrog CLI
         env:
