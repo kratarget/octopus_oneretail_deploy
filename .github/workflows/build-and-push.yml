@@ -31,8 +31,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: oneretailhackaton.jfrog.io
-          username: ${{ secrets.JFROG_USER_WRITER }}
-          password: ${{ secrets.JFROG_PASSWORD_WRITER }}
+          username: oneretailhackaton
+          password: ${{ secrets.JF_ACCESS_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
