@@ -39,12 +39,14 @@ jobs:
         with:
           JF_URL: ${{ vars.JF_URL }}
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-
-
-      - name: Build Tag and push Docker Image
+          
+      - name: Show current directory and list files
         run: |
           pwd
           ls -la
+
+      - name: Build Tag and push Docker Image
+        run: |
           jf docker build -t $IMAGE_NAME -f ../Dockerfile .
           jf docker push $IMAGE_NAME
           
