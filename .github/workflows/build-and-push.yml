@@ -54,4 +54,4 @@ jobs:
           context: "./app"
           file: "./Dockerfile"
           push: true
-          tags: ${{ github.run_number }}
+          tags: ${{ env.IMAGE_NAME }}
