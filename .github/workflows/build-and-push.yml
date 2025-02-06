@@ -63,6 +63,10 @@ jobs:
         run: |-
           cd manifests/app/base
           ../../../kustomize edit set image ${{ env.IMAGE_NAME }}
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 #      - name: 'Kustomize Build'
 #        uses: karancode/kustomize-github-action@master
 #        with:
