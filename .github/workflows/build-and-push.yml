@@ -44,6 +44,8 @@ jobs:
 
       - name: Build Tag and push Docker Image
         run: |
+          pwd
+          ls -la
           jf docker build -t $IMAGE_NAME -f ../Dockerfile .
           jf docker push $IMAGE_NAME
           
