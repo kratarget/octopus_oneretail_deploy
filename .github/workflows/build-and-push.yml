@@ -22,7 +22,9 @@ jobs:
       - name: Check out Repo Source
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.SOURCE_REPO_SECRET }}
           repository: 'kratarget/oneretail-app'
+          ref: 'master'
           clean: 'true'
       
       # Use the payload if needed
