@@ -66,7 +66,7 @@ jobs:
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.SOURCE_REPO_SECRET }}
 #      - name: 'Kustomize Build'
 #        uses: karancode/kustomize-github-action@master
 #        with:
