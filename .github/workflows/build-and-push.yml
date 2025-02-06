@@ -5,6 +5,10 @@ on:
   repository_dispatch:
     types: [deploy-event]  # same as 'event_type' from Repo A
 
+permissions:
+  id-token: write
+  contents: write
+
 env:
   REGISTRY: oneretailhackaton.jfrog.io/virtual-docker
   IMAGE_NAME: oneretailhackaton.jfrog.io/virtual-docker/${{ github.repository }}:${{ github.run_number }}
