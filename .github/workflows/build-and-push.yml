@@ -1,8 +1,9 @@
 
 name: Deploy upon dispatch
 on:
+  workflow_dispatch:
   repository_dispatch:
-    types: [deploy-event, workflow_dispatch]  # same as 'event_type' from Repo A
+    types: [deploy-event]  # same as 'event_type' from Repo A
 
 env:
   REGISTRY: oneretailhackaton.jfrog.io/virtual-docker
