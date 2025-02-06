@@ -61,7 +61,8 @@ jobs:
           chmod u+x ./kustomize
       - name: Deploy
         run: |-
-          ./kustomize edit set image ${{ env.IMAGE_NAME }} --path manifests/app/base
+          cd manifests/app/base
+          ../../../kustomize edit set image ${{ env.IMAGE_NAME }}
 #      - name: 'Kustomize Build'
 #        uses: karancode/kustomize-github-action@master
 #        with:
