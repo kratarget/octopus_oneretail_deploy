@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: oneretailhackaton.jfrog.io/virtual-docker
-  IMAGE_NAME: ${{ env.REGISTRY }}/${{ github.repository }}
+  IMAGE_NAME: oneretailhackaton.jfrog.io/virtual-docker/${{ github.repository }}:${{ github.run_number }}
 
 jobs:
   build:
