@@ -26,6 +26,7 @@ jobs:
           token: ${{ secrets.SOURCE_REPO_SECRET }}
           repository: 'kratarget/oneretail-app'
           ref: 'master'
+          path: 'app'
       
       # Use the payload if needed
       - name: Show payload
@@ -47,7 +48,7 @@ jobs:
 
       - name: Build Tag and push Docker Image
         run: |
-          jf docker build -t $IMAGE_NAME -f ../Dockerfile .
+          jf docker build -t $IMAGE_NAME -f ./Dockerfile ./app
           jf docker push $IMAGE_NAME
           
       - name: Publish Build info With JFrog CLI
