@@ -3,6 +3,9 @@ kind: Kustomization
 namespace: octopus
 
 resources:
-  - namespace.yaml
-  - registry-secret.yaml
-  - deploy.yaml
+- namespace.yaml
+- registry-secret.yaml
+- deploy.yaml
+images:
+- name: oneretailhackaton.jfrog.io/virtual-docker/kratarget/octopus_oneretail_deploy
+  newTag: "24"
