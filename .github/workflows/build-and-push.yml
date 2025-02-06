@@ -34,7 +34,7 @@ jobs:
         with:
           registry: oneretailhackaton.jfrog.io/virtual-docker
           username: amine.zaine@external.engie.com
-          password: ${{ secrets.JFROG_TOKEN }}
+          password: ${{ secrets.JF_ACCESS_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
