@@ -20,10 +20,12 @@ spec:
         - name: app
           image: oneretailhackaton.jfrog.io/virtual-docker/kratarget/octopus_oneretail_deploy
           env:
+          - name: NODE_IP
+            valueFrom:
+              fieldRef:
+                 fieldPath: status.hostIP
           - name: OTEL_EXPORTER_OTLP_ENDPOINT
-            value: http://$(NODE_IP):4318
-#          - name: OTEL_LOGS_EXPORTER
-#            value: "otlp"
+            value: http://$(NODE_IP):4317
           resources:
             requests:
               memory: "512Mi"
