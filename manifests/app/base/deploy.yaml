@@ -15,7 +15,7 @@ spec:
         app: oneretail-app
     spec:
       imagePullSecrets:
-        - name: oneretailhackaton.jfrog.io
+        - name: oneretailhackaton
       containers:
         - name: app
           image: oneretailhackaton.jfrog.io/virtual-docker/kratarget/octopus_oneretail_deploy
