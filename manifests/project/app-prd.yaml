@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: oneretail
+  name: oneretail-prd
   namespace: argocd
   labels:
-    env: dev
+    env: prd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -15,10 +15,10 @@ spec:
   source:
     path: manifests/app/base
     repoURL: https://github.com/kratarget/octopus_oneretail_deploy.git
-    targetRevision: main
+    targetRevision: prd
   syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
+#    automated:
+#      selfHeal: true
+#      prune: true
     syncOptions:
       - PruneLast=true
