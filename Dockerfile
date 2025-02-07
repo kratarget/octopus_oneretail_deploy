@@ -32,5 +32,5 @@ EXPOSE 8080
 ENV environment=production
 
 # Run the app with OpenTelemetry Java Agent
-#ENTRYPOINT ["java", "-javaagent:/app/opentelemetry-javaagent.jar", "-jar", "/app/oneretail.jar"]
-ENTRYPOINT ["java", "-jar", "/app/oneretail.jar"]
+ENTRYPOINT ["java", "-javaagent:/app/opentelemetry-javaagent.jar", "-jar", "/app/oneretail.jar"]
+#ENTRYPOINT ["java", "-jar", "/app/oneretail.jar"]
