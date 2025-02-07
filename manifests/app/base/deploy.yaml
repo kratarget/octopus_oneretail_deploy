@@ -22,8 +22,8 @@ spec:
           env:
           - name: OTEL_EXPORTER_OTLP_ENDPOINT
             value: http://$(NODE_IP):4318
-          - name: OTEL_LOGS_EXPORTER
-            value: "otlp"
+#          - name: OTEL_LOGS_EXPORTER
+#            value: "otlp"
           resources:
             requests:
               memory: "512Mi"
