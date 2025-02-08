@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: oneretail-app
-  name: my-service
+  name: oneretail-app
   namespace: octopus
 spec:
   type: ClusterIP
