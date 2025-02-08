@@ -9,4 +9,4 @@ resources:
 - service.yaml
 images:
 - name: oneretailhackaton.jfrog.io/virtual-docker/kratarget/octopus_oneretail_deploy
-  newTag: "34"
+  newTag: "35"
