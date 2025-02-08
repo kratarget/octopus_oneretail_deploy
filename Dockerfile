@@ -22,7 +22,7 @@ RUN addgroup --system oneretail && adduser --system --ingroup oneretail oneretai
 WORKDIR /app
 
 # Download OpenTelemetry Java Agent
-RUN curl -sSL -o /app/opentelemetry-javaagent.jar https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+RUN curl -sSL -o /app/splunk-otel-javaagent.jar https://github.com/signalfx/splunk-otel-java/releases/download/v2.12.0/splunk-otel-javaagent.jar
 
 COPY --from=builder /app/target/oneretail-1.0.0.jar /app/oneretail.jar
 
@@ -32,5 +32,5 @@ EXPOSE 8080
 ENV environment=production
 
 # Run the app with OpenTelemetry Java Agent
-ENTRYPOINT ["java", "-javaagent:/app/opentelemetry-javaagent.jar", "-jar", "/app/oneretail.jar"]
+ENTRYPOINT ["java", "-javaagent:/app/splunk-otel-javaagent.jar", "-jar", "/app/oneretail.jar"]
 #ENTRYPOINT ["java", "-jar", "/app/oneretail.jar"]
