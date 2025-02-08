@@ -26,6 +26,8 @@ spec:
                  fieldPath: status.hostIP
           - name: OTEL_EXPORTER_OTLP_ENDPOINT
             value: http://$(NODE_IP):4318
+          - name: OTEL_SERVICE_NAME
+            value: one-retail-app
           resources:
             requests:
               memory: "512Mi"
