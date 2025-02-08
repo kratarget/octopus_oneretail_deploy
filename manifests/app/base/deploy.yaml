@@ -24,10 +24,14 @@ spec:
             valueFrom:
               fieldRef:
                  fieldPath: status.hostIP
+          # - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          #   value: http://$(NODE_IP):4318
+          # - name: OTEL_SERVICE_NAME
+          #   value: one-retail-app
           - name: OTEL_EXPORTER_OTLP_ENDPOINT
-            value: http://$(NODE_IP):4318
-          - name: OTEL_SERVICE_NAME
-            value: one-retail-app
+            value: "http://splunk-otel-collector.otel.svc.cluster.local:4318"
+          - name: OTEL_RESOURCE_ATTRIBUTES
+            value: "service.name=oneretail-app,service.namespace=octopus,cluster.name=hackathon-team-octopus"
           - name: OTEL_TRACES_EXPORTER
             value: otlp
           - name: OTEL_METRICS_EXPORTER
