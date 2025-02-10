@@ -1,0 +1,48 @@
+name: Deploy to AWS EKS using Terraform
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: '1.4.0'  # Ensure this is the version you want to use
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Apply Terraform Configuration
+        run: terraform apply -auto-approve
+
+      - name: Build and Push Docker Image to ECR
+        run: |
+          IMAGE_TAG=latest
+          ECR_URI=$(terraform output -raw ecr_repository_url)
+          docker build -t $ECR_URI:$IMAGE_TAG .
+          docker push $ECR_URI:$IMAGE_TAG
+
+      - name: Deploy to EKS
+        run: |
+          # Fetch EKS kubeconfig
+          EKS_CLUSTER_NAME=$(terraform output -raw eks_cluster_name)
+          aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region us-east-1
+          
+          # Apply Kubernetes manifests
+          kubectl apply -f eks/app.yml
